@@ -24,10 +24,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Lint
         run: npm run lint
+
+      - name: Run Tests with Coverage
+        run: npm test -- --coverage
+        # vitest config already enforces 75% min coverage
+        # workflow will fail automatically if below
 
       - name: Build
         run: npm run build
